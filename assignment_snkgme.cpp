@@ -1,30 +1,27 @@
 #include <iostream>
-
 #include <conio.h>
 /*
 
-¹æÇâÅ° ÀÔ·Â¿¡ µû¶ó ¹æÇâÀüÈ¯À» ÇÏ´Â ±¸¹®À» ¸¸µé¾î ÁÖ±â À§ÇØ¼± conio ÇÔ¼ö¿Í windows.h °¡ ¼±¾ðµÇ¾î¾ß ÇÑ´Ù.
-¶ÇÇÑ, getch ÇÔ¼ö , kbhit ÇÔ¼ö°¡ »ç¿ëµÈ´Ù.
-
-conio.h : ÀÔ·ÂÀÌ ÀÖ¾ú´ÂÁö, ¾ø¾ú´ÂÁö ÆÇ´ÜÇÏ´Â ÇÔ¼ö
-coni.h³»¿¡¼± kbhitÀÌ¶ó´Â ÇÔ¼ö°¡ Á¸ÀçÇÑ´Ù. ÀÌ´Â ¹öÆÛ¿¡ °ªÀÌ ÀÖÀ¸¸é 1, ¾øÀ¸¸é 0À» ¸®ÅÏÇÏ´Âµ¥.
-ÇÑ¸¶µð·Î ÀÔ·ÂÀÌ ÀÖ¾ú´ÂÁö, ¾ø¾ú´ÂÁö ÆÇ´ÜÇÏ´Â ÇÔ¼öÀÌ´Ù.
-getch()ÇÔ¼öµµ Á¸ÀçÇÑ´Ù. ÀÌ´Â ¹öÆÛ¿¡ ÀÖ´Â °ªÀ» ²¨³»¿À´Â ¿ªÇÒÀ» ÇÑ´Ù.
-kbhit ==1  -> getch()  ÀÌ·± ½ÄÀ¸·Î »ç¿ëÇÏ¸é µÉ °Í °°´Ù.
-ÃâÃ³ : https://monny.tistory.com/5
-
+ë°©í–¥í‚¤ ìž…ë ¥ì— ë”°ë¼ ë°©í–¥ì „í™˜ì„ í•˜ëŠ” êµ¬ë¬¸ì„ ë§Œë“¤ì–´ ì£¼ê¸° ìœ„í•´ì„  conio í•¨ìˆ˜ì™€ windows.h ê°€ ì„ ì–¸ë˜ì–´ì•¼ í•œë‹¤.
+ë˜í•œ, getch í•¨ìˆ˜ , kbhit í•¨ìˆ˜ê°€ ì‚¬ìš©ëœë‹¤.
+conio.h : ìž…ë ¥ì´ ìžˆì—ˆëŠ”ì§€, ì—†ì—ˆëŠ”ì§€ íŒë‹¨í•˜ëŠ” í•¨ìˆ˜
+coni.hë‚´ì—ì„  kbhitì´ë¼ëŠ” í•¨ìˆ˜ê°€ ì¡´ìž¬í•œë‹¤. ì´ëŠ” ë²„í¼ì— ê°’ì´ ìžˆìœ¼ë©´ 1, ì—†ìœ¼ë©´ 0ì„ ë¦¬í„´í•˜ëŠ”ë°.
+í•œë§ˆë””ë¡œ ìž…ë ¥ì´ ìžˆì—ˆëŠ”ì§€, ì—†ì—ˆëŠ”ì§€ íŒë‹¨í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
+getch()í•¨ìˆ˜ë„ ì¡´ìž¬í•œë‹¤. ì´ëŠ” ë²„í¼ì— ìžˆëŠ” ê°’ì„ êº¼ë‚´ì˜¤ëŠ” ì—­í• ì„ í•œë‹¤.
+kbhit ==1  -> getch()  ì´ëŸ° ì‹ìœ¼ë¡œ ì‚¬ìš©í•˜ë©´ ë  ê²ƒ ê°™ë‹¤.
+ì¶œì²˜ : https://monny.tistory.com/5
 */
 
 
 #include <windows.h>
 /*
-system("cls")¿Í sleep()ÇÔ¼ö¸¦ »ç¿ëÇÏ±â À§ÇÑ Çì´õÆÄÀÏ
-cls : °ÔÀÓ¿À¹ö½Ã Ãâ·ÂÇÏ´Â °Í ÀÏµí
-sleep : Áö¿¬½Ã°£ ¼³Á¤ÇÏ´Â ÇÔ¼ö
-Áï, ³­ÀÌµµ°¡ ¿Ã¶ó°£´Ù¸é, sleepÇÔ¼ö¸¦ Å¸ÀÌÆ®ÇÏ°Ô ÇÏ¿©, ³­ÀÌµµ¸¦ ¾î·Æ°Ô ÇØ¾ß ÇÔ
+system("cls")ì™€ sleep()í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ í—¤ë”íŒŒì¼
+cls : ê²Œìž„ì˜¤ë²„ì‹œ ì¶œë ¥í•˜ëŠ” ê²ƒ ì¼ë“¯
+sleep : ì§€ì—°ì‹œê°„ ì„¤ì •í•˜ëŠ” í•¨ìˆ˜
+ì¦‰, ë‚œì´ë„ê°€ ì˜¬ë¼ê°„ë‹¤ë©´, sleepí•¨ìˆ˜ë¥¼ íƒ€ì´íŠ¸í•˜ê²Œ í•˜ì—¬, ë‚œì´ë„ë¥¼ ì–´ë µê²Œ í•´ì•¼ í•¨
 */
 #include <time.h> /*
-¸ÔÀÌ ·£´ýÀ¸·Î ½ºÆùÇÏ±â À§ÇÑ Çì´õÆÄÀÏ
+ë¨¹ì´ ëžœë¤ìœ¼ë¡œ ìŠ¤í°í•˜ê¸° ìœ„í•œ í—¤ë”íŒŒì¼
 */
 using namespace std;
 bool gameOver;
@@ -34,25 +31,28 @@ int x, y, fruitX, fruitY, score;
 int tailX[100], tailY[100];
 int nTail;
 char recent = 'm';
-enum eDirecton { STOP = 0, LEFT, RIGHT, UP, DOWN }; // left,right,up,down ÀÌ¶ó´Â Å°¸¦ Á¤ÀÇÇÏ±â À§ÇÑ ±¸¹®
-eDirecton dir; // ÀÌ ±¸¹®À» dir¶ó´Â º¯¼ö·Î ÇÏ³ª ¸¸µé¾ú´Ù.
+enum eDirecton { STOP = 0, LEFT, RIGHT, UP, DOWN }; // left,right,up,down ì´ë¼ëŠ” í‚¤ë¥¼ ì •ì˜í•˜ê¸° ìœ„í•œ êµ¬ë¬¸
+eDirecton dir; // ì´ êµ¬ë¬¸ì„ dirë¼ëŠ” ë³€ìˆ˜ë¡œ í•˜ë‚˜ ë§Œë“¤ì—ˆë‹¤.
 void Setup()
 {
     gameOver = false;
     dir = STOP;
-    x = width / 2;
-    y = height / 2;
-    fruitX = rand() % width; // XÁÂÇ¥°¡ width¸¦ ³Ñ¾î¹ö¸®¸é ¾ÈµÇ±â ¶§¹®¿¡ % width¸¦ ÇØÁÜ, ¹ØºÎºÐµ¼ ¤¿Âù°¡Áö
+    x = width / 2; //ë±€ì˜ ë¨¸ë¦¬ Xì¢Œí‘œ
+    y = height / 2; //ë±€ì˜ ë¨¸ë¦¬ Yì¢Œí‘œ
+    fruitX = rand() % width; // Xì¢Œí‘œê°€ widthë¥¼ ë„˜ì–´ë²„ë¦¬ë©´ ì•ˆë˜ê¸° ë•Œë¬¸ì— % widthë¥¼ í•´ì¤Œ, ë°‘ë¶€ë¶„ë„ ë§ˆì°¬ê°€ì§€
     fruitY = rand() % height;
     score = 0;
 }
-void Draw() // ÀÔ·Â , ¹æÇâÅ°ÂÊÀ¸·Î ÀüÁøÇÏ´Â ±¸¹®°°Àº°Å ¾øÀ½. ±×³É ¹Ì¸® ÆÇÀ» Â¥µÎ±â À§ÇÑ ÇÔ¼öÀÏ »Ó
+void Draw() // ìž…ë ¥ , ë°©í–¥í‚¤ìª½ìœ¼ë¡œ ì „ì§„í•˜ëŠ” êµ¬ë¬¸ê°™ì€ê±° ì—†ìŒ. ê·¸ëƒ¥ ë¯¸ë¦¬ íŒì„ ì§œë‘ê¸° ìœ„í•œ í•¨ìˆ˜ì¼ ë¿
 {
-    system("cls"); // ÀÌ ±¸¹®ÀÌ ¾øÀ¸¸é, °è¼Ó°è¼ÓÇØ¼­ ÄÜ¼ÖÈ­¸é¿¡ ½º³×ÀÌÅ© °ÔÀÓ Ã¢ÀÌ »ý¼ºµÊ
+    system("cls"); // ì´ êµ¬ë¬¸ì´ ì—†ìœ¼ë©´, ê³„ì†ê³„ì†í•´ì„œ ì½˜ì†”í™”ë©´ì— ìŠ¤ë„¤ì´í¬ ê²Œìž„ ì°½ì´ ìƒì„±ë¨
     cout << endl;
-    cout << " "; // ¸Ç À§¿¡ Ç¥½ÃµÇ´Â ºó °ø°£
-    for (int i = 0; i < width + 2; i++)
-        cout << "-"; // À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®À§ÂÊº®
+    cout << " "; // ë§¨ ìœ„ì— í‘œì‹œë˜ëŠ” ë¹ˆ ê³µê°„
+    cout << "X";
+    for (int i = 1; i < width + 1; i++){
+        cout << "-"; // ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½ìœ„ìª½ë²½
+    }
+    cout << "X";
     cout << endl;
 
     for (int i = 0; i < height; i++)
@@ -60,14 +60,14 @@ void Draw() // ÀÔ·Â , ¹æÇâÅ°ÂÊÀ¸·Î ÀüÁøÇÏ´Â ±¸¹®°°Àº°Å ¾øÀ½. ±×³É ¹Ì¸® ÆÇÀ» Â¥µÎ
         for (int j = 0; j < width; j++)
         {
             if (j == 0)
-                cout << "¤Ó"; // ¿ÞÂÊº®¿ÞÂÊº®¿ÞÂÊº®¿ÞÂÊº®¿ÞÂÊº®¿ÞÂÊº®¿ÞÂÊº®¿ÞÂÊº®¿ÞÂÊº®¿ÞÂÊº®¿ÞÂÊº®¿ÞÂÊº®¿ÞÂÊº®¿ÞÂÊº®¿ÞÂÊº®¿ÞÂÊº®
+                cout << "ã…£"; // ì™¼ìª½ë²½ì™¼ìª½ë²½ì™¼ìª½ë²½ì™¼ìª½ë²½ì™¼ìª½ë²½ì™¼ìª½ë²½ì™¼ìª½ë²½ì™¼ìª½ë²½ì™¼ìª½ë²½ì™¼ìª½ë²½ì™¼ìª½ë²½ì™¼ìª½ë²½ì™¼ìª½ë²½ì™¼ìª½ë²½ì™¼ìª½ë²½ì™¼ìª½ë²½
             if (i == y && j == x)
-                cout << "O"; // ¸ÊÀÇ °¡¿îµ¥¿¡ ¹ì ¸Ó¸® ¼³Á¤
+                cout << "O"; // ë§µì˜ ê°€ìš´ë°ì— ë±€ ë¨¸ë¦¬ ì„¤ì •
             else if (i == fruitY && j == fruitX)
-                cout << "F"; // ¸Ê¿¡ ·£´ýÇÏ°Ô Fruit »ý¼ºÇÔ
+                cout << "F"; // ë§µì— ëžœë¤í•˜ê²Œ Fruit ìƒì„±í•¨
             else
             {
-                bool print = false; //print¶ó´Â bool ÇÔ¼ö ¼±¾ð, ÀÌÈÄ ÀÌ¸¦ false·Î ÃÊ±âÈ­
+                bool print = false; //printë¼ëŠ” bool í•¨ìˆ˜ ì„ ì–¸, ì´í›„ ì´ë¥¼ falseë¡œ ì´ˆê¸°í™”
                 for (int k = 0; k < nTail; k++)
                 {
                     if (tailX[k] == j && tailY[k] == i)
@@ -81,17 +81,23 @@ void Draw() // ÀÔ·Â , ¹æÇâÅ°ÂÊÀ¸·Î ÀüÁøÇÏ´Â ±¸¹®°°Àº°Å ¾øÀ½. ±×³É ¹Ì¸® ÆÇÀ» Â¥µÎ
             }
 
             if (j == width - 1)
-                cout << "¤Ó"; // ¿À¸¥ÂÊº®¿À¸¥ÂÊº®¿À¸¥ÂÊº®¿À¸¥ÂÊº®¿À¸¥ÂÊº®¿À¸¥ÂÊº®¿À¸¥ÂÊº®¿À¸¥ÂÊº®¿À¸¥ÂÊº®¿À¸¥ÂÊº®¿À¸¥ÂÊº®¿À¸¥ÂÊº®¿À¸¥ÂÊº®
+                cout << "ã…£"; // ì˜¤ë¥¸ìª½ë²½ì˜¤ë¥¸ìª½ë²½ì˜¤ë¥¸ìª½ë²½ì˜¤ë¥¸ìª½ë²½ì˜¤ë¥¸ìª½ë²½ì˜¤ë¥¸ìª½ë²½ì˜¤ë¥¸ìª½ë²½ì˜¤ë¥¸ìª½ë²½ì˜¤ë¥¸ìª½ë²½ì˜¤ë¥¸ìª½ë²½ì˜¤ë¥¸ìª½ë²½ì˜¤ë¥¸ìª½ë²½ì˜¤ë¥¸ìª½ë²½
         }
         cout << endl;
     }
 
     cout << " ";
-    for (int i = 0; i < width + 2; i++)
-        cout << "-"; // ¾Æ·¡ÂÊº®¾Æ·¡ÂÊº®¾Æ·¡ÂÊº®¾Æ·¡ÂÊº®¾Æ·¡ÂÊº®¾Æ·¡ÂÊº®¾Æ·¡ÂÊº®¾Æ·¡ÂÊº®¾Æ·¡ÂÊº®¾Æ·¡ÂÊº®¾Æ·¡ÂÊº®¾Æ·¡ÂÊº®¾Æ·¡ÂÊº®¾Æ·¡ÂÊº®¾Æ·¡ÂÊº®
+    cout << "X";
+    for (int i = 1; i < width + 1; i++){
+        cout << "-"; // ì•„ëž˜ìª½ë²½ì•„ëž˜ìª½ë²½ì•„ëž˜ìª½ë²½ì•„ëž˜ìª½ë²½ì•„ëž˜ìª½ë²½ì•„ëž˜ìª½ë²½ì•„ëž˜ìª½ë²½ì•„ëž˜ìª½ë²½ì•„ëž˜ìª½ë²½ì•„ëž˜ìª½ë²½ì•„ëž˜ìª½ë²½ì•„ëž˜ìª½ë²½ì•„ëž˜ìª½ë²½ì•„ëž˜ìª½ë²½ì•„ëž˜ìª½ë²½
+    }
+    cout << "X"; 
     cout << endl;
     cout << " Score:" << score << endl;
 }
+
+
+
 void Input()
 {
     if (_kbhit())
@@ -115,53 +121,13 @@ void Input()
                 dir = DOWN;
                 recent = 's';
             }
-
-
-            /*switch (key) {
-            case 72:
-                dir = UP;
-                recent = 'w';
-                break;
-            case 75 :
-                dir = LEFT;
-                recent = 'a';
-                break;
-            case 77 :
-                dir = RIGHT;
-                recent = 'd';
-                break;
-            case 80 :
-                dir = DOWN;
-                recent = 's';
-                break;
-            default:
-                break;
-            }*/
         }
-        /*switch (_getch())
-        {
-
-
-        case 'a':
-            dir = LEFT;
-            break;
-        case 'd':
-            dir = RIGHT;
-            break;
-        case 'w':
-            dir = UP;
-            break;
-        case 's':
-            dir = DOWN;
-            break;
-        case 'x':
-            gameOver = true;
-            break;
-        default:
-            break;
-        }*/
+        
     }
 }
+
+
+
 void Logic()
 {
     int prevX = tailX[0];
@@ -215,14 +181,14 @@ void Logic()
 }
 int main()
 {
-    system("MODE con cols=50 lines=30");
+    system("MODE con cols=50 lines=30"); // ì½˜ì†” ì°½ í¬ê¸° ì§€ì •í•´ì£¼ëŠ” êµ¬ë¬¸
     Setup();
-    while (!gameOver) // °ÔÀÓ¿À¹ö°¡ µÇÁö ¾Ê´Â ÇÑ, ´ÙÀ½ ÇÔ¼öµéÀ» Â÷·Ê´ë·Î ½ÇÇàÇÑ´Ù.
+    while (!gameOver) // ê²Œìž„ì˜¤ë²„ê°€ ë˜ì§€ ì•ŠëŠ” í•œ, ë‹¤ìŒ í•¨ìˆ˜ë“¤ì„ ì°¨ë¡€ëŒ€ë¡œ ì‹¤í–‰í•œë‹¤.
     {
         Draw();
         Input();
         Logic();
-        Sleep(100); //sleep(10);
+        Sleep(100); // ì§€ì—°ìœ¨, 50ì´ë©´ ë” ì–´ë µê³ , 200ì´ë©´ ë” ì‰¬ì›Œì§
     }
     return 0;
 }
