@@ -25,6 +25,7 @@ sleep : 지연시간 설정하는 함수
 */
 using namespace std;
 int Fruit_time = 0;
+int Poison_time = 0;
 bool gameOver;
 const int width = 40;
 const int height = 20;
@@ -183,6 +184,7 @@ void Logic()
         fruitX = rand() % width;
         fruitY = rand() % height;
         nTail++;
+        Fruit_time = 0; // 머리가 Fruit을 먹은 후엔, Fruit 리스폰 시간 0으로 초기화 함
     }
     else if (Fruit_time > 35) { // 과일이 생성된 후 5초 이후면 Fruit 의 위치가 변경됨
         Fruit_time = 0;
@@ -190,15 +192,21 @@ void Logic()
         fruitY = rand() % height;
     }
 
-
     if (x == poisonX && y == poisonY) // 머리가 Poison을 먹는 구문
     {
-        srand(time(0));
+        srand(time(0)); // Random seed value for rand based on time
         score -= 10;
         poisonX = rand() % width;
         poisonY = rand() % height;
         nTail--;
     }
+
+        else if (Poison_time > 35) { // 과일이 생성된 후 5초 이후면 Fruit 의 위치가 변경됨
+        Poison_time = 0;
+        poisonX = rand() % width;
+        poisonY = rand() % height;
+    }
+
 }
 int main()
 {
@@ -211,6 +219,7 @@ int main()
         Logic();
         Sleep(100); // 지연율, 50이면 더 어렵고, 200이면 더 쉬워진다
         Fruit_time++;
+        Poison_time++;
     }
     return 0;
 }
