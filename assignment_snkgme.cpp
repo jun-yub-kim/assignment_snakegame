@@ -24,10 +24,11 @@ sleep : 지연시간 설정하는 함수
 먹이 랜덤으로 스폰하기 위한 헤더파일
 */
 using namespace std;
+int Fruit_time = 0;
 bool gameOver;
 const int width = 40;
 const int height = 20;
-int x, y, fruitX, fruitY, score;
+int x, y, fruitX, fruitY, poisonX, poisonY, score;
 int tailX[100], tailY[100];
 int nTail;
 char recent = 'm';
@@ -39,8 +40,11 @@ void Setup()
     dir = STOP;
     x = width / 2; //뱀의 머리 X좌표
     y = height / 2; //뱀의 머리 Y좌표
-    fruitX = rand() % width; // X좌표가 width를 넘어버리면 안되기 때문에 % width를 해줌, 밑부분도 마찬가지
+    fruitX = rand() % width; // Fruit의 X좌표가 width를 넘어버리면 안되기 때문에 % width를 해줌, 밑부분도 마찬가지
     fruitY = rand() % height;
+    poisonX = rand() % width; // Fruit과 마찬가지로 점수를 깎아먹는 아이템 생성
+    poisonY = rand() % height;
+    // 이 부분에, Fruit 생성이 3초가 넘으면, 새로운 Fruit 생성해야됨
     score = 0;
 }
 void Draw() // 입력 , 방향키쪽으로 전진하는 구문같은거 없음. 그냥 미리 판을 짜두기 위한 함수일 뿐
@@ -65,6 +69,8 @@ void Draw() // 입력 , 방향키쪽으로 전진하는 구문같은거 없음. 
                 cout << "O"; // 맵의 가운데에 뱀 머리 설정
             else if (i == fruitY && j == fruitX)
                 cout << "F"; // 맵에 랜덤하게 Fruit 생성함
+            else if (i == poisonY && j == poisonX)
+                cout << "P"; // 맵에 랜덤하게 Fruit 생성함
             else
             {
                 bool print = false; //print라는 bool 함수 선언, 이후 이를 false로 초기화
@@ -161,22 +167,37 @@ void Logic()
     default:
         break;
     }
-    if (x > width || x < 0 || y > height || y < 0)
+    if (x > width || x < 0 || y > height || y < 0) //벽을 치면 죽는 구문
         gameOver = true;
     //if (x >= width) x = 0; else if (x < 0) x = width - 1;
     //if (y >= height) y = 0; else if (y < 0) y = height - 1;
 
     for (int i = 0; i < nTail; i++)
-        if (tailX[i] == x && tailY[i] == y)
+        if (tailX[i] == x && tailY[i] == y) // 머리가 꼬리를 먹으면 죽는 구문
             gameOver = true;
 
-    if (x == fruitX && y == fruitY)
+    if (x == fruitX && y == fruitY) // 머리가 Fruit을 먹는 구문
     {
         srand(time(0)); // Random seed value for rand based on time
         score += 10;
         fruitX = rand() % width;
         fruitY = rand() % height;
         nTail++;
+    }
+    else if (Fruit_time > 35) { // 과일이 생성된 후 5초 이후면 Fruit 의 위치가 변경됨
+        Fruit_time = 0;
+        fruitX = rand() % width;
+        fruitY = rand() % height;
+    }
+
+
+    if (x == poisonX && y == poisonY) // 머리가 Poison을 먹는 구문
+    {
+        srand(time(0));
+        score -= 10;
+        poisonX = rand() % width;
+        poisonY = rand() % height;
+        nTail--;
     }
 }
 int main()
@@ -188,7 +209,8 @@ int main()
         Draw();
         Input();
         Logic();
-        Sleep(100); // 지연율, 50이면 더 어렵고, 200이면 더 쉬워짐
+        Sleep(100); // 지연율, 50이면 더 어렵고, 200이면 더 쉬워진다
+        Fruit_time++;
     }
     return 0;
 }
