@@ -199,6 +199,7 @@ void Logic()
         poisonX = rand() % width;
         poisonY = rand() % height;
         nTail--;
+        Poison_time = 0;
     }
 
         else if (Poison_time > 35) { // 과일이 생성된 후 5초 이후면 Fruit 의 위치가 변경됨
