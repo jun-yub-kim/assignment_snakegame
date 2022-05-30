@@ -25,6 +25,7 @@ sleep : 지연시간 설정하는 함수
 */
 using namespace std;
 int Fruit_time = 0;
+int key_count = 0;
 int Poison_time = 0;
 bool gameOver;
 const int width = 40;
@@ -54,7 +55,7 @@ void Draw() // 입력 , 방향키쪽으로 전진하는 구문같은거 없음. 
     cout << endl;
     cout << " "; // 맨 위에 표시되는 빈 공간
     cout << "X";
-    for (int i = 1; i < width + 1; i++){
+    for (int i = 1; i < width + 1; i++) {
         cout << "-"; // 위쪽벽위쪽벽위쪽벽위쪽벽위쪽벽위쪽벽위쪽벽위쪽벽위쪽벽위쪽벽위쪽벽위쪽벽위쪽벽위쪽벽위쪽벽위쪽벽위쪽벽위쪽벽
     }
     cout << "X";
@@ -95,10 +96,10 @@ void Draw() // 입력 , 방향키쪽으로 전진하는 구문같은거 없음. 
 
     cout << " ";
     cout << "X";
-    for (int i = 1; i < width + 1; i++){
+    for (int i = 1; i < width + 1; i++) {
         cout << "-"; // 아래쪽벽아래쪽벽아래쪽벽아래쪽벽아래쪽벽아래쪽벽아래쪽벽아래쪽벽아래쪽벽아래쪽벽아래쪽벽아래쪽벽아래쪽벽아래쪽벽아래쪽벽
     }
-    cout << "X"; 
+    cout << "X";
     cout << endl;
     cout << " Score:" << score << endl;
 }
@@ -111,6 +112,10 @@ void Input()
     {
         int key = _getch();
         if (key == 224 || key == 0) {
+            key_count++;
+            if (key_count < 2) {
+                nTail = nTail + 3;
+            }
             key = _getch();
             if (key == 72 && recent != 's') {
                 dir = UP;
@@ -129,7 +134,7 @@ void Input()
                 recent = 's';
             }
         }
-        
+
     }
 }
 
@@ -177,6 +182,13 @@ void Logic()
         if (tailX[i] == x && tailY[i] == y) // 머리가 꼬리를 먹으면 죽는 구문
             gameOver = true;
 
+    if (key_count > 2) {
+        if (nTail < 3) { //꼬리가 3개 미만이면 죽는 구문
+            gameOver = true;
+        }
+    }
+    
+
     if (x == fruitX && y == fruitY) // 머리가 Fruit을 먹는 구문
     {
         srand(time(0)); // Random seed value for rand based on time
@@ -192,6 +204,8 @@ void Logic()
         fruitY = rand() % height;
     }
 
+
+
     if (x == poisonX && y == poisonY) // 머리가 Poison을 먹는 구문
     {
         srand(time(0)); // Random seed value for rand based on time
@@ -202,7 +216,7 @@ void Logic()
         Poison_time = 0;
     }
 
-        else if (Poison_time > 35) { // 과일이 생성된 후 5초 이후면 Fruit 의 위치가 변경됨
+    else if (Poison_time > 35) { // 과일이 생성된 후 5초 이후면 Fruit 의 위치가 변경됨
         Poison_time = 0;
         poisonX = rand() % width;
         poisonY = rand() % height;
