@@ -67,8 +67,20 @@ void Draw() // 입력 , 방향키쪽으로 전진하는 구문같은거 없음. 
         {
             if (j == 0)
                 cout << "ㅣ"; // 왼쪽벽왼쪽벽왼쪽벽왼쪽벽왼쪽벽왼쪽벽왼쪽벽왼쪽벽왼쪽벽왼쪽벽왼쪽벽왼쪽벽왼쪽벽왼쪽벽왼쪽벽왼쪽벽
-            if (i == y && j == x)
-                cout << "O"; // 맵의 가운데에 뱀 머리 설정
+            if (i == y && j == x) { //뱀 머리 세모로 변경, 방향에 따라서 세모 모양도 변경
+                if (recent == 'w' || recent == 'm') {
+                    cout << "▲";
+                }
+                else if (recent == 's') {
+                    cout << "▼";
+                }
+                else if (recent == 'a') {
+                    cout << "◀";
+                }
+                else if (recent == 'd') {
+                    cout << "▶";
+                }
+            }
             else if (i == fruitY && j == fruitX)
                 cout << "F"; // 맵에 랜덤하게 Fruit 생성함
             else if (i == poisonY && j == poisonX)
